@@ -2,7 +2,7 @@ kind: Service
 apiVersion: v1
 metadata:
 # set your user name
-  name: user12-hello-world
+  name: user12-hello-world-service
 spec:
   ports:
     - protocol: TCP
