@@ -14,11 +14,7 @@ spec:
       labels:
 # set your lab user name
         app: {{ .Release.Name }}
-    volumes:
-      - name: index-html
-        configMap:
-          name: index.html
-          defaultMode: 420
+
     spec:
       containers:
         - resources: {}
@@ -31,8 +27,13 @@ spec:
 # update with the image you build in part 1
           image: {{ .Values.containers.image }}:{{ .Values.containers.tag }}
           volumeMounts:
-          - name: index-html
-            mountPath: /tmp/html # this will mount the html.index file to it application location
+            - name: index-html
+              mountPath: /tmp/html # this will mount the html.index file to it application location
+      volumes:
+      - name: index-html
+        configMap:
+          name: index.html
+          defaultMode: 420
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
   strategy:
