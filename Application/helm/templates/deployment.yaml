@@ -35,19 +35,20 @@ spec:
             successThreshold: 1 # count to decalre seccessfull 
             failureThreshold: 3 # count to decalre failure 
 
-            livenessProbe:
-              httpGet:
-                path: /health/liveliness
-                port: {{ .Values.containers.containerPort }}
-                scheme: HTTP
-              initialDelaySeconds: 1
-              timeoutSeconds: 1
-              periodSeconds: 10
-              successThreshold: 1
-              failureThreshold: 3
-            env:
-              - name: PORT
-                value: {{ .Values.containers.containerPort | quote }}
+          livenessProbe:
+            httpGet:
+              path: /health/liveliness
+              port: {{ .Values.containers.containerPort }}
+              scheme: HTTP
+            initialDelaySeconds: 1
+            timeoutSeconds: 1
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+            
+          env:
+            - name: PORT
+              value: {{ .Values.containers.containerPort | quote }}
 
           imagePullPolicy: IfNotPresent
 # update with the image you build in part 1
