@@ -12,14 +12,14 @@ probes:
   readiness:
     path: /health/readiness # this check the application url path
     initialDelaySeconds: 1 # the time is waiting befor testing the application path
-    timeoutSeconds: 1 # the time for timeout
+    timeoutSeconds: 2 # the time for timeout
     periodSeconds: 10 # the abount of time to wait between checks
     successThreshold: 1 # count to decalre seccessfull 
     failureThreshold: 3 # count to decalre failure 
   liveness:
     path: /health/liveliness
     initialDelaySeconds: 1
-    timeoutSeconds: 1
+    timeoutSeconds: 3
     periodSeconds: 10
     successThreshold: 1
     failureThreshold: 3
