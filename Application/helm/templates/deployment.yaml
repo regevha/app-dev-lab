@@ -3,8 +3,6 @@ apiVersion: apps/v1
 metadata:
 # set your lab user name
   name: {{ .Release.Name }}
-  annotations:
-    checksum/config: {{ include (print $.Template.BasePath "/ConfigMap.yaml") . | sha256sum }}
 spec:
   replicas: {{ .Values.ReplicaNumber }}
   selector:
@@ -13,6 +11,8 @@ spec:
       app: {{ .Release.Name }}
   template:
     metadata:
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/ConfigMap.yaml") . | sha256sum }} 
       labels:
 # set your lab user name
         app: {{ .Release.Name }}
