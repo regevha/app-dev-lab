@@ -14,11 +14,11 @@ spec:
       labels:
 # set your lab user name
         app: {{ .Release.Name }}
-      volumes:
-        - name: index-html
-          configMap:
-            name: index.html
-            defaultMode: 420
+    volumes:
+      - name: index-html
+        configMap:
+          name: index.html
+          defaultMode: 420
     spec:
       containers:
         - resources: {}
