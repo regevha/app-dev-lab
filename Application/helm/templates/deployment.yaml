@@ -45,7 +45,9 @@ spec:
             periodSeconds: {{ .Values.probes.liveness.periodSeconds  }}
             successThreshold: {{ .Values.probes.liveness.successThreshold  }} 
             failureThreshold: {{ .Values.probes.liveness.failureThreshold  }} 
-            
+          volumeMounts:
+            - name: index-html
+              mountPath: /tmp/html # this will mount the html.index file to it application location            
           env:
             - name: PORT
               value: {{ .Values.containers.containerPort | quote }}
@@ -53,9 +55,7 @@ spec:
           imagePullPolicy: IfNotPresent
 # update with the image you build in part 1
           image: {{ .Values.containers.image }}:{{ .Values.containers.tag }}
-          volumeMounts:
-            - name: index-html
-              mountPath: /tmp/html # this will mount the html.index file to it application location
+
       volumes:
       - name: index-html
         configMap:
