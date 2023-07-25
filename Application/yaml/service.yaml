@@ -3,6 +3,8 @@ apiVersion: v1
 metadata:
 # set your user name
   name: user12-hello-world-service
+  stam: 'a'
+  stam2: 5
 spec:
   ports:
     - protocol: TCP
@@ -11,3 +13,5 @@ spec:
   selector:
 # set your user name
     app: user12-hello-world
+abc: 5
+
